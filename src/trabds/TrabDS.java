@@ -30,7 +30,7 @@ public class TrabDS {
         c.setIdade(18);
         c.setLocal("SãoMarcos");
         c.setNome("Julia Medeiros");
-        c.addCliente("Julia Medeiros", 18, "SãoMarcos");
+        c.addCliente(c);
         
     }
     

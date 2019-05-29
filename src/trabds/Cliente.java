@@ -5,8 +5,9 @@
  */
 package trabds;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
+import conexao_banco.Conexao;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,9 +29,10 @@ public class Cliente {
     private Statement declaracao = null;
     private ResultSet resultado = null;
     
-    public void addCliente(String Nome, int Idade, String Local){
+    public void addCliente(Cliente c){
+       conexao = Conexao.conectar();
         try {
-            String query = "insert into cliente (Nome, Idade, Endereco) values('"+Nome+"',"+Idade+",'"+Local+"';";
+            String query = "insert into cliente (Nome, Codigo, Idade, Endereco) values('"+c.getNome()+"',"+c.getIdade()+",'"+c.getLocal()+"';";
             this.declaracao.executeUpdate(query);
         } catch (Exception e) {
             System.out.println("Error: "+e.getMessage());

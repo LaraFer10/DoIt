@@ -9,8 +9,8 @@ package conexao_banco;
  *
  * @author Lara
  */
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.sql.DriverManager;
 
 /**
@@ -18,15 +18,15 @@ import java.sql.DriverManager;
  * @author Lara
  */
 public class Conexao {
-    static String servidor ="jdbc:mysql://Localhost:3306/doit";
+    static String servidor ="jdbc:mysql://localhost:3306/doit?useTimezone=true&serverTimezone=UTC";
     static String usuario = "root";
     static String senha = "Ferreira123";
-    static String driver = "com.mysql.jdbc.Driver";
+    static String driver = "com.mysql.cj.jdbc.Driver";
     
     private static Connection conexao = null;
     private static Statement declaracao = null;
    
-    public static void conectar(){
+    public static Connection conectar(){
         try {
          Class.forName(driver);
          Conexao.conexao = (Connection)DriverManager.getConnection(servidor, usuario, senha);
@@ -34,6 +34,7 @@ public class Conexao {
         } catch (Exception e) {
             System.out.println("ERROR: "+e.getMessage());
         }
+        return null;
     }
     
             
