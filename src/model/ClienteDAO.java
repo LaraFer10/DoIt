@@ -25,7 +25,9 @@ public class ClienteDAO {
     private Statement declaracao = null;
     private ResultSet resultado = null;
     
-    
+    public ClienteDAO(){
+      conexao = Conexao.conectar;
+    }   
     public void addCliente(Cliente cli){
        
         String script = "INSERT INTO cliente (Nome, Idade, Endereco) VALUES(?, ?, ?);";
