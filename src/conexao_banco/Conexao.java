@@ -12,6 +12,8 @@ package conexao_banco;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -23,14 +25,16 @@ public class Conexao {
     static String senha = "Ferreira123";
     static String driver = "com.mysql.cj.jdbc.Driver";
     
-    private static Connection conexao = null;
-    private static Statement declaracao = null;
+    public static Connection conexao = null;
+    public static Statement declaracao = null;
+    public static PreparedStatement ps = null;
+    public static ResultSet rs = null;
    
     public static Connection conectar(){
         try {
          Class.forName(driver);
-         Conexao.conexao = (Connection)DriverManager.getConnection(servidor, usuario, senha);
-         Conexao.declaracao = (Statement) Conexao.conexao.createStatement();
+         conexao = (Connection)DriverManager.getConnection(servidor, usuario, senha);
+         declaracao = (Statement) Conexao.conexao.createStatement();
         } catch (Exception e) {
             System.out.println("ERROR: "+e.getMessage());
         }

@@ -21,22 +21,17 @@ import java.sql.ResultSet;
 public class ClienteDAO {
    
     
-    private Connection conexao = null;
-    private Statement declaracao = null;
-    private ResultSet resultado = null;
-    
-    
     public void addCliente(Cliente cli){
        
         String script = "INSERT INTO cliente (Nome, Idade, Endereco) VALUES(?, ?, ?);";
         try {
-            PreparedStatement stmt = conexao.prepareStatement(script);
+            Conexao.ps = Conexao.conexao.prepareStatement(script);
             
-            stmt.setString(1, cli.getNome());
-            stmt.setInt(2, cli.getIdade());
-            stmt.setString(3, cli.getLocal());
+            Conexao.ps.setString(1, cli.getNome());
+            Conexao.ps.setInt(2, cli.getIdade());
+            Conexao.ps.setString(3, cli.getLocal());
             System.out.println(script);
-            stmt.executeUpdate();
+            Conexao.ps.executeUpdate();
            
             
         } catch (Exception e) {
@@ -49,12 +44,12 @@ public class ClienteDAO {
         String query = "select * from cliente;";
         
         try {
-            PreparedStatement declaracao = conexao.prepareStatement(query);
-            resultado = declaracao.executeQuery();
+            Conexao.ps = Conexao.conexao.prepareStatement(query);
+            Conexao.rs = Conexao.ps.executeQuery();
             
-            while (resultado.next()) {
-                System.out.println("Codigo: "+resultado.getInt("Codigo")+"\nNome: "+resultado.getString("Nome")+
-                        "\nIdade: "+resultado.getInt("Idade")+"Endereço: "+resultado.getString("Endereco"));
+            while (Conexao.rs.next()) {
+                System.out.println("Codigo: "+Conexao.rs.getInt("Codigo")+"\nNome: "+Conexao.rs.getString("Nome")+
+                        "\nIdade: "+Conexao.rs.getInt("Idade")+"Endereço: "+Conexao.rs.getString("Endereco"));
             }
             
         } catch (Exception e) {

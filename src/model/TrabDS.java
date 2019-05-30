@@ -20,7 +20,7 @@ public class TrabDS {
      */
     public static void main(String[] args) {
        
-       Conexao.conectar();
+        Conexao.conectar();
        
         ClienteDAO cdao = new ClienteDAO();
         Cliente c = new Cliente();
@@ -29,7 +29,6 @@ public class TrabDS {
         c.setLocal("Barros Reis");
         cdao.addCliente(c);
         cdao.listarClientes();
-        
     }
     
     
