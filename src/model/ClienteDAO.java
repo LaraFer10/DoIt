@@ -6,21 +6,15 @@
 package model;
 
 import conexao_banco.Conexao;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.sql.ResultSet;
-
-
-
 
 /**
  *
  * @author Lara
  */
 public class ClienteDAO {
-   
-    
+    public ClienteDAO(){
+      Conexao.conexao = Conexao.conectar();
+    }   
     public void addCliente(Cliente cli){
        
         String script = "INSERT INTO cliente (Nome, Idade, Endereco) VALUES(?, ?, ?);";
