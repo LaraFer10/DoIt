@@ -16,8 +16,18 @@ public class Cliente {
     private String nome;
     private int idade;
     private String local;
-    private ArrayList<ServicoDAO> Servicos;
+    private String senha;
+    private ArrayList<Servico> Servicos;
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    
+    
     public int getCodigo() {
         return codigo;
     }
@@ -50,11 +60,11 @@ public class Cliente {
         this.local = local;
     }
 
-    public ArrayList<ServicoDAO> getServicos() {
+    public ArrayList<Servico> getServicos() {
         return Servicos;
     }
 
-    public void setServicos(ArrayList<ServicoDAO> Servicos) {
+    public void setServicos(ArrayList<Servico> Servicos) {
         this.Servicos = Servicos;
     }
     

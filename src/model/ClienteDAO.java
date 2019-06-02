@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 
@@ -21,47 +23,52 @@ import java.sql.ResultSet;
 public class ClienteDAO {
    
     
-    private Connection conexao = null;
-    private Statement declaracao = null;
-    private ResultSet resultado = null;
+    
+    
     
     
     public void addCliente(Cliente cli){
        
-        String script = "INSERT INTO cliente (Nome, Idade, Endereco) VALUES(?, ?, ?);";
+        String script = "INSERT INTO cliente (Nome, Idade, Endereco, Senha) VALUES(?, ?, ?, ?);";
         try {
-            PreparedStatement stmt = conexao.prepareStatement(script);
+            Conexao.pstmt = Conexao.conexao.prepareStatement(script);
             
-            stmt.setString(1, cli.getNome());
-            stmt.setInt(2, cli.getIdade());
-            stmt.setString(3, cli.getLocal());
-            System.out.println(script);
-            stmt.executeUpdate();
-           
+            Conexao.pstmt.setString(1, cli.getNome());
+            Conexao.pstmt.setInt(2, cli.getIdade());
+            Conexao.pstmt.setString(3, cli.getLocal());
+            Conexao.pstmt.setString(4, cli.getSenha());
+            Conexao.pstmt.executeUpdate();
+            
             
         } catch (Exception e) {
-            System.out.println("ERROR - Inserir dados: "+e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR - Inserir dados: "+e.getMessage());
         }
         
             
     }
-    public void listarClientes(){
-        String query = "select * from cliente;";
-        
+  
+    public ArrayList<Cliente> buscarClientes(){
+        String query = "select Nome, Senha from cliente;";
+        Cliente c = new Cliente();
+        ArrayList <Cliente> cli = new ArrayList();
         try {
-            PreparedStatement declaracao = conexao.prepareStatement(query);
-            resultado = declaracao.executeQuery();
+            PreparedStatement declaracao = Conexao.conexao.prepareStatement(query);
+            Conexao.resultado = declaracao.executeQuery();
             
-            while (resultado.next()) {
-                System.out.println("Codigo: "+resultado.getInt("Codigo")+"\nNome: "+resultado.getString("Nome")+
-                        "\nIdade: "+resultado.getInt("Idade")+"Endereço: "+resultado.getString("Endereco"));
+            while (Conexao.resultado.next()) {
+                c.setNome(Conexao.resultado.getString("Nome"));
+                c.setSenha(Conexao.resultado.getString("Senha"));
+                cli.add(c);
             }
             
+            
         } catch (Exception e) {
-            System.out.println("ERROR MYSQL: "+e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR NO MYSQL: "+e.getMessage());
         }
-        
+        return cli;
     }
+    
+    
     
 
     

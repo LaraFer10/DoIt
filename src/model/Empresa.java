@@ -14,6 +14,16 @@ public class Empresa {
     private String nome;
     private String local;
     private String especialidade;
+    private String contato;
+
+    public String getContato() {
+        return contato;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
+    }
+    
 
     public int getCodigo() {
         return codigo;
