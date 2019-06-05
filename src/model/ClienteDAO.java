@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,22 +16,18 @@ import javax.swing.JOptionPane;
 
 
 
-
 /**
  *
  * @author Lara
  */
 public class ClienteDAO {
-   
-    
-    
-    
-    
-    
+
+
     public void addCliente(Cliente cli){
        
         String script = "INSERT INTO cliente (Nome, Idade, Endereco, Senha) VALUES(?, ?, ?, ?);";
         try {
+
             Conexao.pstmt = Conexao.conexao.prepareStatement(script);
             
             Conexao.pstmt.setString(1, cli.getNome());
@@ -38,7 +35,6 @@ public class ClienteDAO {
             Conexao.pstmt.setString(3, cli.getLocal());
             Conexao.pstmt.setString(4, cli.getSenha());
             Conexao.pstmt.executeUpdate();
-            
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR - Inserir dados: "+e.getMessage());
@@ -60,7 +56,6 @@ public class ClienteDAO {
                 c.setSenha(Conexao.resultado.getString("Senha"));
                 cli.add(c);
             }
-            
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR NO MYSQL: "+e.getMessage());

@@ -39,7 +39,7 @@ public class TrabDS {
      */
     public static void main(String[] args) {
        
-       Conexao.conectar();
+        Conexao.conectar();
        
        //Metodos DAO e Bean
        Cliente c = new Cliente();

@@ -27,13 +27,16 @@ public class Conexao {
     
     public static Connection conexao = null;
     public static Statement declaracao = null;
+
     public static ResultSet resultado = null;
     public static PreparedStatement pstmt = null;
+
    
     public static Connection conectar(){
         try {
          Class.forName(driver);
          conexao = (Connection)DriverManager.getConnection(servidor, usuario, senha);
+
          declaracao = (Statement) conexao.createStatement();
         } catch (Exception e) {
             System.out.println("ERROR: "+e.getMessage());
