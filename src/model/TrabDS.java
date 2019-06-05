@@ -24,6 +24,7 @@ import View.Servico;
 import View.Solicitar;
 import View.Tecnicos;
 import conexao_banco.Conexao;
+import java.util.ArrayList;
 
 
 
@@ -40,6 +41,15 @@ public class TrabDS {
        
        Conexao.conectar();
        
+       //Metodos DAO e Bean
+       Cliente c = new Cliente();
+       ServicoBean sevBean = new ServicoBean();
+       Empresa empBean = new Empresa();
+       Empresa empTec = new Empresa();
+       Empresa empProf = new Empresa();
+       Empresa empEntrega = new Empresa();
+       ClienteDAO cdao = new ClienteDAO();
+       EmpresaDAO empredao = new EmpresaDAO();
         
         //TELAS INSTANCIADAS
         Entregadores entrega = new Entregadores();
@@ -73,16 +83,52 @@ public class TrabDS {
         prof.setSize(400, 550);
         hist.setSize(400, 550);
         
+        
+        
+        
+        
+        
+        
         //CONTROLLER INSTANCIADO
-        ServController sc = new ServController(serv, perf, tec, prof, entrega);
-        PerfilController pc = new PerfilController(perf,serv, hist, solic, log);
+
         LoginController lc = new LoginController(log, cad, perf);
-        CadController cc = new CadController(cad, log, perf);
+        int i = lc.levaNome();
+        
+        c.setCodigo(cdao.buscarCliente().get(i).getCodigo());
+        c.setNome(cdao.buscarCliente().get(i).getNome());
+        c.setIdade(cdao.buscarCliente().get(i).getIdade());
+        c.setLocal(cdao.buscarCliente().get(i).getLocal());
+        c.setSenha(cdao.buscarCliente().get(i).getSenha());
+        
+        empTec.setCodigo(empredao.buscarTecnico().get(i).getCodigo());
+        empTec.setNome(empredao.buscarTecnico().get(i).getNome());
+        empTec.setArea(empredao.buscarTecnico().get(i).getArea());
+        empTec.setEspecialidade(empredao.buscarTecnico().get(i).getEspecialidade());
+        empTec.setLocal(empredao.buscarTecnico().get(i).getLocal());
+        empTec.setContato(empredao.buscarTecnico().get(i).getContato());
+        
+        empProf.setCodigo(empredao.buscarProfessor().get(i).getCodigo());
+        empProf.setNome(empredao.buscarProfessor().get(i).getNome());
+        empProf.setArea(empredao.buscarProfessor().get(i).getArea());
+        empProf.setEspecialidade(empredao.buscarProfessor().get(i).getEspecialidade());
+        empProf.setLocal(empredao.buscarProfessor().get(i).getLocal());
+        empProf.setContato(empredao.buscarProfessor().get(i).getContato());
+        
+        empEntrega.setCodigo(empredao.buscarEntregador().get(i).getCodigo());
+        empEntrega.setNome(empredao.buscarEntregador().get(i).getNome());
+        empEntrega.setArea(empredao.buscarEntregador().get(i).getArea());
+        empEntrega.setEspecialidade(empredao.buscarEntregador().get(i).getEspecialidade());
+        empEntrega.setLocal(empredao.buscarEntregador().get(i).getLocal());
+        empEntrega.setContato(empredao.buscarEntregador().get(i).getContato());
+        
+        PerfilController pc = new PerfilController(perf,serv, hist, solic, log,c);
+        ServController sc = new ServController(serv, perf, tec, prof, entrega);
+        CadController cc = new CadController(cad, log, perf, c);
         HistoricoController hc = new HistoricoController(hist, perf);
-        ProfessoresController profc = new ProfessoresController(prof, perf);
-        SolicitarController solicc = new SolicitarController(solic, perf);
-        TecnicosController tc = new TecnicosController(tec, perf);
-        EntregadoresController ec =new EntregadoresController(entrega, perf);
+        ProfessoresController profc = new ProfessoresController(prof, perf, empProf);
+        SolicitarController solicc = new SolicitarController(solic, perf, sevBean, empBean);
+        TecnicosController tc = new TecnicosController(tec, perf, empTec);
+        EntregadoresController ec =new EntregadoresController(entrega, perf, empEntrega);
         
         
     }

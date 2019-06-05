@@ -17,7 +17,7 @@ public class Cliente {
     private int idade;
     private String local;
     private String senha;
-    private ArrayList<Servico> Servicos;
+    private ArrayList<ServicoBean> Servicos;
 
     public String getSenha() {
         return senha;
@@ -60,11 +60,11 @@ public class Cliente {
         this.local = local;
     }
 
-    public ArrayList<Servico> getServicos() {
+    public ArrayList<ServicoBean> getServicos() {
         return Servicos;
     }
 
-    public void setServicos(ArrayList<Servico> Servicos) {
+    public void setServicos(ArrayList<ServicoBean> Servicos) {
         this.Servicos = Servicos;
     }
     

@@ -60,7 +60,7 @@ public class Entregadores extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -80,12 +80,16 @@ public class Entregadores extends javax.swing.JFrame {
 
         btnSolicitar.setText("Solicitar");
 
+        lblNome.setFont(new java.awt.Font("Nirmala UI", 1, 11)); // NOI18N
         lblNome.setText("Nome");
 
+        lblEnd.setFont(new java.awt.Font("Nirmala UI", 0, 11)); // NOI18N
         lblEnd.setText("Endereço");
 
+        lblContato.setFont(new java.awt.Font("Nirmala UI", 0, 11)); // NOI18N
         lblContato.setText("Contato");
 
+        lblEspec.setFont(new java.awt.Font("Nirmala UI", 1, 11)); // NOI18N
         lblEspec.setText("Especialidade");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -95,34 +99,37 @@ public class Entregadores extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNome)
+                    .addComponent(lblContato))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(lblEspec))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
                         .addComponent(lblEnd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSolicitar)
-                        .addGap(51, 51, 51))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(lblContato)
-                                .addGap(84, 84, 84)
-                                .addComponent(lblEspec))
-                            .addComponent(lblNome))
-                        .addContainerGap(170, Short.MAX_VALUE))))
+                        .addGap(83, 83, 83)
+                        .addComponent(btnSolicitar)))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblNome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSolicitar)
-                    .addComponent(lblEnd))
-                .addGap(2, 2, 2)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblContato)
+                    .addComponent(lblNome)
                     .addComponent(lblEspec))
-                .addContainerGap())
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblContato)
+                            .addComponent(lblEnd))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSolicitar)
+                        .addGap(28, 28, 28))))
         );
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lara\\Pictures\\BLOGGER\\pessoa4.png")); // NOI18N
@@ -172,7 +179,7 @@ public class Entregadores extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,9 +241,9 @@ public class Entregadores extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbl;
-    private javax.swing.JLabel lblContato;
-    private javax.swing.JLabel lblEnd;
-    private javax.swing.JLabel lblEspec;
-    private javax.swing.JLabel lblNome;
+    public javax.swing.JLabel lblContato;
+    public javax.swing.JLabel lblEnd;
+    public javax.swing.JLabel lblEspec;
+    public javax.swing.JLabel lblNome;
     // End of variables declaration//GEN-END:variables
 }

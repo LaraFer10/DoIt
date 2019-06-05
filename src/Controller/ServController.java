@@ -41,7 +41,7 @@ public class ServController implements ActionListener{
            perf.setVisible(true);
        }else{
            if(ae.getSource()== serv.btnTecnico){
-               this.entrega.setVisible(true);
+               this.tec.setVisible(true);
            }else{
                if(ae.getSource()== serv.btnProf){
                    prof.setVisible(true);

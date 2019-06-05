@@ -6,9 +6,11 @@
 package Controller;
 
 import View.Perfil;
+import model.ServicoBean;
 import View.Solicitar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.Empresa;
 
 /**
  *
@@ -18,7 +20,7 @@ public class SolicitarController implements ActionListener{
     Solicitar soli;
     Perfil perf;
     
-    public SolicitarController(Solicitar solicitar, Perfil perfil){
+    public SolicitarController(Solicitar solicitar, Perfil perfil, ServicoBean servicoBean, Empresa empresaBean){
         this.perf=perfil;
         this.soli=solicitar;
         this.soli.btnEu.addActionListener(this);

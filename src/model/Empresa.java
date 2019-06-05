@@ -15,6 +15,17 @@ public class Empresa {
     private String local;
     private String especialidade;
     private String contato;
+    private String area;
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+    
+    
 
     public String getContato() {
         return contato;

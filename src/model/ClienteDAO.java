@@ -47,7 +47,7 @@ public class ClienteDAO {
             
     }
   
-    public ArrayList<Cliente> buscarClientes(){
+    public ArrayList<Cliente> buscarLogin_Clientes(){
         String query = "select Nome, Senha from cliente;";
         Cliente c = new Cliente();
         ArrayList <Cliente> cli = new ArrayList();
@@ -67,7 +67,28 @@ public class ClienteDAO {
         }
         return cli;
     }
-    
+    public ArrayList<Cliente> buscarCliente(){
+        String query = "select * from cliente;";
+        Cliente c = new Cliente();
+        ArrayList <Cliente> cli = new ArrayList();
+        try {
+            PreparedStatement declaracao = Conexao.conexao.prepareStatement(query);
+            Conexao.resultado = declaracao.executeQuery();
+            
+            while (Conexao.resultado.next()) {
+                c.setCodigo(Conexao.resultado.getInt("Codigo"));
+                c.setNome(Conexao.resultado.getString("Nome"));
+                c.setIdade(Conexao.resultado.getInt("Idade"));
+                c.setLocal(Conexao.resultado.getString("Endereco"));
+                c.setSenha(Conexao.resultado.getString("Senha"));
+                cli.add(c);
+            }
+           
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR NO MYSQL ao pegar todos os dados do cliente: "+e.getMessage());
+        }
+        return cli;
+    }
     
     
 

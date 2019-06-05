@@ -11,6 +11,8 @@ import View.Login;
 import View.Perfil;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import model.Cliente;
 import model.ClienteDAO;
 
 /**
@@ -22,11 +24,13 @@ public class LoginController implements ActionListener{
     Login log;
     Cadastro cad;
     Perfil perf;
+    Cliente c;
     
     public LoginController(Login login, Cadastro cadastro, Perfil perfil){
         this.log = login;
         this.cad = cadastro;
         this.perf = perfil;
+        
         this.log.btnEntrar.addActionListener(this);
         this.log.btnCad.addActionListener(this);
         this.cdao = new ClienteDAO();
@@ -37,18 +41,30 @@ public class LoginController implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == log.btnCad){
             cad.setVisible(true);
-            CadController cc = new CadController(cad,log,perf);
         }
         
         if(ae.getSource() == log.btnEntrar){
-            for (int i = 0; i < cdao.buscarClientes().size(); i++) {
+            for (int i = 0; i < cdao.buscarLogin_Clientes().size(); i++) {
             
-                if(cdao.buscarClientes().get(i).getNome().equals(log.txtUser.getText()) && cdao.buscarClientes().get(i).getSenha().equals(log.txtSenha.getText())){
-                 perf.setVisible(true);
+                if(cdao.buscarLogin_Clientes().get(i).getNome().equals(log.txtUser.getText()) && cdao.buscarLogin_Clientes().get(i).getSenha().equals(log.txtSenha.getText())){
+                    perf.setVisible(true);
 
+                }else{
+                    JOptionPane.showMessageDialog(null, "Senha ou usuário incorretos!");
                 }
              }
         }
+       
+    }
+    public int levaNome(){
+         for (int i = 0; i < cdao.buscarLogin_Clientes().size(); i++) {
+            
+                if(cdao.buscarLogin_Clientes().get(i).getNome().equals(log.txtUser.getText()) && cdao.buscarLogin_Clientes().get(i).getSenha().equals(log.txtSenha.getText())){
+                   return i;
+
+                }
+         }
+        return 0;
     }
     
 }

@@ -23,11 +23,13 @@ public class CadController implements ActionListener{
     Cadastro cad;
     Login log;
     Perfil perf;
+    Cliente c;
     
-    public CadController(Cadastro cadastro, Login login, Perfil perfil){
+    public CadController(Cadastro cadastro, Login login, Perfil perfil, Cliente cliente){
        this.cad = cadastro;
        this.log = login;
        this.perf = perfil;
+       this.c=cliente;
        this.cad.btnSalvar.addActionListener(this);
        this.cad.btnCancelar.addActionListener(this);
        this.cdao = new ClienteDAO();
@@ -35,21 +37,19 @@ public class CadController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        c.setNome(cad.txtNome.getText());
+        c.setSenha(cad.txtSenha.getText());
+        c.setIdade(Integer.parseInt(cad.txtIdade.getText()));
+        if(c.getIdade()<18){
+            JOptionPane.showMessageDialog(null, "Você precisa ter a partir de 18 anos para usar o Programa :(");
+        }
+        c.setLocal(cad.txtEnd.getText());
         if(ae.getSource() == cad.btnSalvar){
-            Cliente c = new Cliente();
-            c.setNome(cad.txtNome.getText());
-            c.setSenha(cad.txtSenha.getText());
-            c.setIdade(Integer.parseInt(cad.txtIdade.getText()));
-            if(c.getIdade()<18){
-                JOptionPane.showMessageDialog(null, "Você precisa ter a partir de 18 anos para usar o Programa :(");
-            }
-            c.setLocal(cad.txtEnd.getText());
             cdao.addCliente(c);
             JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!");
         }
         if(ae.getSource() == cad.btnCancelar){
             log.setVisible(true);
-            LoginController lc = new LoginController(log, cad, perf);
         }
     }
     

@@ -9,6 +9,7 @@ import View.Perfil;
 import View.Professores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.Empresa;
 
 /**
  *
@@ -18,11 +19,16 @@ public class ProfessoresController implements ActionListener{
     Professores prof;
     Perfil perf;
     
-    public ProfessoresController(Professores professores, Perfil perfil){
+    public ProfessoresController(Professores professores, Perfil perfil, Empresa empresa){
         this.perf=perfil;
         this.prof=professores;
         prof.btnEu.addActionListener(this);
         prof.btnSolicitar.addActionListener(this);
+        prof.lblNome.setText(empresa.getNome());
+        prof.lblContato.setText("Contato: "+empresa.getContato());
+        prof.lblEnd.setText(empresa.getLocal());
+        prof.lblEsp.setText(empresa.getEspecialidade());
+        
     }
 
     @Override
