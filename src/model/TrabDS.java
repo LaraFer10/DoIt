@@ -39,7 +39,7 @@ public class TrabDS {
      */
     public static void main(String[] args) {
        
-        Conexao.conectar();
+       Conexao.conectar();
        
        //Metodos DAO e Bean
        Cliente c = new Cliente();
@@ -125,10 +125,11 @@ public class TrabDS {
         ServController sc = new ServController(serv, perf, tec, prof, entrega);
         CadController cc = new CadController(cad, log, perf, c);
         HistoricoController hc = new HistoricoController(hist, perf);
-        ProfessoresController profc = new ProfessoresController(prof, perf, empProf);
+        ProfessoresController profc = new ProfessoresController(prof, perf, empredao, c, sevBean);
         SolicitarController solicc = new SolicitarController(solic, perf, sevBean, empBean);
-        TecnicosController tc = new TecnicosController(tec, perf, empTec);
-        EntregadoresController ec =new EntregadoresController(entrega, perf, empEntrega);
+       
+        TecnicosController tc = new TecnicosController(tec, perf, empredao, sevBean, c);
+        EntregadoresController ec =new EntregadoresController(entrega, perf, empredao, c, sevBean);
         
         
     }

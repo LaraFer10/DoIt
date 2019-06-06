@@ -10,7 +10,14 @@ import model.ServicoBean;
 import View.Solicitar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static javafx.scene.input.KeyCode.J;
+import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JTextArea;
+import model.Cliente;
 import model.Empresa;
+import model.ServicoDAO;
 
 /**
  *
@@ -19,11 +26,14 @@ import model.Empresa;
 public class SolicitarController implements ActionListener{
     Solicitar soli;
     Perfil perf;
+    ServicoDAO serdao;
     
     public SolicitarController(Solicitar solicitar, Perfil perfil, ServicoBean servicoBean, Empresa empresaBean){
         this.perf=perfil;
         this.soli=solicitar;
+       
         this.soli.btnEu.addActionListener(this);
+        
         
     }
 
@@ -33,5 +43,7 @@ public class SolicitarController implements ActionListener{
             perf.setVisible(true);
         }
     }
+    
+    
     
 }
